@@ -835,8 +835,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>Interpolation is done in asset pricing when it’s necessary to estimate the pricing of options or other derivatives that aren’t actually traded.</p></li>
 </ul>
 </li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.isnull().sum</span></code> will report missing values by variable.</p></li>
-<li><p>In general, when you can confidently deduce a value (my height this year is the same as last year because I’m a fully grown adult (mostly)), go ahead.  That is valid data.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.isnull().sum()</span></code> will report missing values by variable.</p></li>
+<li><p>In general, when you can confidently deduce a value (my height this year is the same as last year because I’m a fully grown adult, mostly), go ahead.  That is valid data.</p></li>
 <li><p>With new datasets, look out for “missing values” that aren’t missing. Some datasets use a certain number to indicate missing data (i.e. -99). Convert these to NaNs with <code class="docutils literal notranslate"><span class="pre">replace</span></code>.</p></li>
 </ol>
 </div>
