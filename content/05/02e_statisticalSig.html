@@ -810,13 +810,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-researchers">
-     5.2.5.1.1. The focus on p-values can be dangerous because it distorts the incentives of researchers
+    <a class="reference internal nav-link" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts">
+     5.2.5.1.1. The focus on p-values can be dangerous because it distorts the incentives of analysts
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#correlation-is-not-causation">
+     5.2.5.1.2. “Correlation is not causation”
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#common-analytical-errors">
-     5.2.5.1.2. Common analytical errors
+     5.2.5.1.3. Common analytical errors
     </a>
    </li>
   </ul>
@@ -932,7 +937,7 @@ const thebe_selector_output = ".output, .cell_output"
 </tr>
 </table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
 </div>
-<p>Thus, the resulting table (which you can see above) displays information next to each coefficient about the level of precision associated with the estimated coefficients.</p>
+<p>Thus, the table that regression produces (which you can see above by clicking the plus button) also displays information next to each coefficient about the level of precision associated with the estimated coefficients.</p>
 <table class="colwidths-auto table">
 <thead>
 <tr class="row-odd"><th class="text-align:left head"><p>Column</p></th>
@@ -989,8 +994,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>**And if you play with a dataset long enough, you’ll find “results”… ***</p></li>
 </ol>
 </div>
-<div class="section" id="the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-researchers">
-<h3><span class="section-number">5.2.5.1.1. </span>The focus on p-values can be dangerous because it distorts the incentives of researchers<a class="headerlink" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-researchers" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts">
+<h3><span class="section-number">5.2.5.1.1. </span>The focus on p-values can be dangerous because it distorts the incentives of analysts<a class="headerlink" href="#the-focus-on-p-values-can-be-dangerous-because-it-distorts-the-incentives-of-analysts" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>Again: <strong>If you torture the data, it will confess (regardless of whether you or it wanted to)</strong></p></li>
 <li><p><strong>Motivated reasoning/cognitive dissonance/confirmation bias</strong>: Analysis like <a class="reference external" href="https://fivethirtyeight.com/features/science-isnt-broken/#part1">the game above</a> is fraught with temptations for humans. That 538 article mentions that about 2/3 of retractions are due to misconduct.</p></li>
@@ -1011,8 +1016,16 @@ const thebe_selector_output = ".output, .cell_output"
 </ol>
 </div>
 </div>
+<div class="section" id="correlation-is-not-causation">
+<h3><span class="section-number">5.2.5.1.2. </span>“Correlation is not causation”<a class="headerlink" href="#correlation-is-not-causation" title="Permalink to this headline">¶</a></h3>
+<p>Surely, you’ve heard that. I prefer this version:</p>
+<blockquote class="epigraph">
+<div><p>Everyone who confuses correlation with causation eventually ends up dead.</p>
+<p><em>&#64;rauscher_emily</em></p>
+</div></blockquote>
+</div>
 <div class="section" id="common-analytical-errors">
-<h3><span class="section-number">5.2.5.1.2. </span>Common analytical errors<a class="headerlink" href="#common-analytical-errors" title="Permalink to this headline">¶</a></h3>
+<h3><span class="section-number">5.2.5.1.3. </span>Common analytical errors<a class="headerlink" href="#common-analytical-errors" title="Permalink to this headline">¶</a></h3>
 <p>Let me repost this figure from <a class="reference internal" href="01a_MLgonewrong.html"><span class="doc std std-doc">an earlier page</span></a>. Notice how a focus on finding significant results can incentivize or subtly lead you towards several of these:</p>
 <a class="reference internal image-reference" href="../../_images/data_fallacies_to_avoid.jpg"><img alt="flowchart" src="../../_images/data_fallacies_to_avoid.jpg" style="width: 800px;" /></a>
 </div>
