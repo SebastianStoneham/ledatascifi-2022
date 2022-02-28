@@ -1020,13 +1020,24 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p class="card-text">What are their statistical properties? (Do you have values for most/all firms, they should have variation within them, are they correlated with any accounting measures)</p></li>
 </ul>
 </li>
-<li><p class="card-text"><strong>Validation checks and discussion of the risk measurements</strong></p>
+<li><p class="card-text"><strong>Validation checks and discussion of the risk measurements</strong> <strong>This step (validating the measurement) is very important in production quality analysis!</strong>*</p>
 <ul class="simple">
 <li><p class="card-text">Discuss briefly whether these measurements are likely “valid” in the sense they capture what you hope.</p></li>
-<li><p class="card-text">Present some evidence they do capture your hopes. (You probably don’t have enough data here to rigorously validate that your measure is associated with the “actual” risk. But if you do, show us!) <strong>This step (validating the measurement) is very important in production quality analysis!</strong>*</p></li>
+<li><p class="card-text">Present some evidence they do capture your hopes. There are many ways to do this, and depend on the data you have and the risks you’re measuring.</p>
+<ul>
+<li><p class="card-text">You might print out a few examples of matches.</p></li>
+<li><p class="card-text">One option is to show sentences that will correctly be caught by the search, and correctly not caught. And how easy is it for your search to find a sentence that matches the search but shouldn’t.. (Hopefully: not too easy!) How easy is it for your search to miss a sentence that it should match…</p></li>
+<li><p class="card-text">One option is to output the list of firms that have high scores, or the industries that have high and low scores. Does the output make sense?</p></li>
 </ul>
 </li>
-<li><p class="card-text">Describe the sample for your tests. (Number of firms, nature of them, summary stats.)</p></li>
+</ul>
+</li>
+<li><p class="card-text">Describe the <em>final</em> sample for your tests, the set of observations where you have all the data you need.</p>
+<ul class="simple">
+<li><p class="card-text">This includes summary stats,the number of firms, and other things EDA would turn up</p></li>
+<li><p class="card-text">Are there any caveats about the sample and/or data? If so, mention them and briefly discuss possible issues they raise with the analysis.</p></li>
+</ul>
+</li>
 <li><p class="card-text">Explore the correlation between your risk values and stock returns around key dates for the onset of covid.</p>
 <ul class="simple">
 <li><p class="card-text">Stock returns are in the class’s data folder (“2019-2020-stock_rets cleaned.zip”)</p></li>
