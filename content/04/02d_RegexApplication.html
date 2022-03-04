@@ -56,7 +56,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="5. Data Science for Finance" href="../05/00_intro.html" />
-    <link rel="prev" title="4.4.3. Developing a regex" href="02c_developing%20a%20regex.html" />
+    <link rel="prev" title="4.4.3. Developing a regex" href="02c_developing_a_regex.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -486,7 +486,7 @@ const thebe_selector_output = ".output, .cell_output"
       </a>
      </li>
      <li class="toctree-l3">
-      <a class="reference internal" href="02c_developing%20a%20regex.html">
+      <a class="reference internal" href="02c_developing_a_regex.html">
        4.4.3. Developing a regex
       </a>
      </li>
@@ -804,8 +804,18 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tips">
+   4.4.4.2. Tips
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#caveats">
+   4.4.4.3. Caveats
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#practice">
-   4.4.4.2. Practice
+   4.4.4.4. Practice
   </a>
  </li>
 </ul>
@@ -1097,23 +1107,32 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="tip admonition">
-<p class="admonition-title"><strong>A very useful trick</strong></p>
-<p>Above, I said that NEAR_regex builds “a (complex) regex pattern that will detect if all of the <strong>strings</strong> are near each other in the document.”  What it is actually doing is putting the strings into a regex. In our examples so far, the strings are always a word.</p>
-<p>But your list of search terms can include “mini-regexs”. The most common use: You want to look for a topic (a word) but make sure it is being used in a specific way.</p>
 </div>
-<p>For example, what if we want to know if a text message chain involves a greeting <em>specifically</em> for James but not John? But annoyingly, James is sometimes referred to by a nickname!</p>
+<div class="section" id="tips">
+<h2><span class="section-number">4.4.4.2. </span>Tips<a class="headerlink" href="#tips" title="Permalink to this headline">¶</a></h2>
+<div class="tip admonition">
+<p class="admonition-title"><strong>Is topic1 near topic2 (instead of word1 near word2)?</strong></p>
+<p><strong>The function doesn’t just look for words that are near each other. It looks to see if <em>regex patterns</em> are near each other.</strong></p>
+<p>Above, I said that NEAR_regex builds “a (complex) regex pattern that will detect if all of the <strong>strings</strong> are near each other in the document.”  What it is actually doing is putting the strings into a regex. In our examples so far, the strings are always a word. But your list of search terms can include “mini-regexs”. The most common use: You want to look for a topic (a word) but make sure it is being used in a specific way.</p>
+</div>
+<p>Suppose we want to know if a text message chain involves a greeting <em>specifically</em> for James but not John? But annoyingly, James is sometimes referred to by a nickname!</p>
 <p>Well, we’d want to build a search that looks for:</p>
 <ol class="simple">
 <li><p>A greeting term: “hey” OR “hi” or “sup”.</p></li>
 <li><p>James’ name and nicknames: “james” OR “jimmy”</p></li>
 </ol>
-<p>So, the “words” variable has two elements, each corresponding to the two things above.</p>
+<p>So we can exploit how regex works so that when we specify the <code class="docutils literal notranslate"><span class="pre">words</span> <span class="pre">=</span> <span class="pre">[element1,</span> <span class="pre">element2]</span></code> list, that</p>
+<ol class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">element1</span></code> is the list of greeting terms.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">element2</span></code> is the list of acceptable names.</p></li>
+</ol>
+<p>**To build a regex that looks for “hey” OR “hi” or “sup”, we need to implement these three things:</p>
 <ul class="simple">
 <li><p>In regex, OR is “|”.</p></li>
 <li><p>No spaces between terms</p></li>
-<li><p>*<em>Important:</em> Put the parentheses around each set of terms!</p></li>
+<li><p>*<em>Important:</em> Put the parentheses around the whole set of terms!</p></li>
 </ul>
+<p>So, “hey” OR “hi” or “sup” becomes <code class="docutils literal notranslate"><span class="pre">'(hey|hi|sup)'</span></code>.</p>
 <p>Constructing a search like this allows you to look for a topic (here, the greeting term) being used in a specific way. Examples:</p>
 <ol class="simple">
 <li><p>The cost (term 1) of building factories (term 2)… but not general costs or costs for other items</p></li>
@@ -1134,9 +1153,9 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>As the function documentation shows, you can print out the matches to see what’s being found:</p>
+<div class="tip admonition">
+<p class="admonition-title">Printing out your matches</p>
+<p>This is very useful to double-check what your search is finding!</p>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1150,9 +1169,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+</div>
+<div class="section" id="caveats">
+<h2><span class="section-number">4.4.4.3. </span>Caveats<a class="headerlink" href="#caveats" title="Permalink to this headline">¶</a></h2>
 <div class="warning admonition">
 <p class="admonition-title">Two caveats</p>
-<p>Caveat One: When a regex finds a match, the part of that string in the match can’t be used again and thus won’t be counted. Above, you could argue that mechanically, there are FOUR matches:</p>
+<p><strong>Caveat One:</strong> When a regex finds a match, the part of that string in the match can’t be used again and thus won’t be counted. Above, you could argue that mechanically, there are FOUR matches:</p>
 <ol class="simple">
 <li><p>hey jimmy</p></li>
 <li><p>jimmy hi</p></li>
@@ -1160,7 +1182,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li><p>james sup</p></li>
 </ol>
 <p>But the “hey jimmy” match “uses up” “jimmy”, so “jimmy hi” can’t be found. Same with matches #3 and #4.</p>
-<p>Caveat Two: The function is “greedy”. Look at the next example, where I allow there to be two words between.</p>
+<p><strong>Caveat Two:</strong> The function is “greedy”. Look at the next example, where I allow there to be two words between.</p>
 <p>Starting from “hey”, it finds “jimmy” right away, but it doesn’t stop. (That would be a “lazy” regex.) It keeps looking, since it can look up to three words away. It takes the largest mechanical match possible, so when it finds james, it deems “hey jimmy hi james” a match, and because of that, “hi james” is already used and can’t be a match. So it reports 1 match, not 2.</p>
 </div>
 <div class="cell docutils container">
@@ -1182,7 +1204,7 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 <div class="section" id="practice">
-<h2><span class="section-number">4.4.4.2. </span>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
+<h2><span class="section-number">4.4.4.4. </span>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">¶</a></h2>
 <p>Let’s use Telsa. Copy this code into an empty notebook, and put the near_regex.py file in the same folder.</p>
 <p>Let’s see how many times the document mentions China in the context of three issues:</p>
 <ol class="simple">
@@ -1278,7 +1300,7 @@ const thebe_selector_output = ".output, .cell_output"
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="02c_developing%20a%20regex.html" title="previous page"><span class="section-number">4.4.3. </span>Developing a regex</a>
+    <a class='left-prev' id="prev-link" href="02c_developing_a_regex.html" title="previous page"><span class="section-number">4.4.3. </span>Developing a regex</a>
     <a class='right-next' id="next-link" href="../05/00_intro.html" title="next page"><span class="section-number">5. </span>Data Science for Finance</a>
 
     </div>
