@@ -815,9 +815,9 @@ const thebe_selector_output = ".output, .cell_output"
 <p>These rules should usually be followed, but there are exceptions. For example, sometimes the case of a letter matters, and sometimes keeping punctuation can help. But usually, textual analysis proceeds as follows:</p>
 <ol>
 <li><p>Use html tags to change/remove unneeded sections, or select the section of text that you want. If there are tables you don’t want to parse or useless header or footer information, toss them out.</p></li>
-<li><p>Remove html tags, and turn the document into a pure text string.</p>
+<li><p>With what remains after step 1, remove html tags and turn the document into a pure text string.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span> 
-<span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>    
+<span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">some_html</span><span class="p">)</span><span class="o">.</span><span class="n">get_text</span><span class="p">()</span>    
 </pre></div>
 </div>
 </li>
