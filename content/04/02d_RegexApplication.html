@@ -1030,6 +1030,13 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 </div>
 </div>
+<div class="note admonition">
+<p class="admonition-title">Two caveats:</p>
+<ol class="simple">
+<li><p>This is a “dumb” function in the sense that it doesn’t do anything to actually detect if two words are in the same sentence or paragraph. There are ways to do that, but we’re going to keep it simple and just stick to this function as-is. Let’s assume that a sentence is about 20 words on average, and a paragraph is 200 words on average.</p></li>
+<li><p>In the next two examples: If your document has line breaks, like a newline symbol (“\n”) or return symbol (“\r”), which create paragraph breaks in a document, this this function <em>won’t</em> search both sides of it. If a document splits paragraphs like this, great: our function will do within-paragraph searching, <strong>as long as our cleaning process doesn’t delete those symbols.</strong> However, some documents have those symbols at the end of every single line and we need to delete them while cleaning, in which case, we can’t assume the function only looks within paragraphs.</p></li>
+</ol>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span>  <span class="o">=</span> <span class="s1">&#39;This is a partial string </span><span class="se">\n</span><span class="s1"> another break with words&#39;</span>
