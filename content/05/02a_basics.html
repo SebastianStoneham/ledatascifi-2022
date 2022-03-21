@@ -881,7 +881,7 @@ y-\hat{y} = \hat{u} = \text{&quot;residual&quot; aka &quot;error&quot;}
 \[ \min \sum(y-\hat{y})^2 \]</div>
 <p>and we can substitute <span class="math notranslate nohighlight">\(\hat{y}\)</span> in to that and get:</p>
 <div class="math notranslate nohighlight">
-\[ \min \sum(y-\hat{a} + \hat{\beta}x)  \]</div>
+\[ \min \sum(y-\hat{a} + \hat{\beta}x)^2  \]</div>
 <p>By solving this problem, you’re in essence “plotting” a bunch of these lines (with corresponding slopes and intercepts), and each time, you get the error for each datapoint (<span class="math notranslate nohighlight">\(\hat{u}\)</span>), and choosing the line that fits the data the best.</p>
 <p>So, to combine this with the <a class="reference internal" href="01b_model_process.html"><span class="doc std std-doc">“Modeling process” page</span></a>, regression follows the same steps as any estimation:</p>
 <ol class="simple">
