@@ -985,7 +985,7 @@ y = a+b_1*X_1+b_2*X_2+...+b_N*X_N+u
       a +\beta_{Fair}, &amp; \text{if cut is Fair} 
           \end{cases} 
 \end{split}\]</div>
-<p>To do this, you take the cut variable (<code class="docutils literal notranslate"><span class="pre">cut={Fair,Good,Very</span> <span class="pre">Good,Premium,Ideal}</span></code>) and create a dummy variable for “Fair”, a dummy vairable for “Good”, a dummy variable for “Very Good”, and a dummy variable for “Premium”. (But not for “Ideal”!) The “statsmodels formula” approach to specifying the regression does this step automatically for you!</p>
+<p>To do this, you take the cut variable (<code class="docutils literal notranslate"><span class="pre">cut={Fair,Good,Very</span> <span class="pre">Good,Premium,Ideal}</span></code>) and create a dummy variable for “Fair”, a dummy variable for “Good”, a dummy variable for “Very Good”, and a dummy variable for “Premium”. (But not for “Ideal”!) The “statsmodels formula” approach to specifying the regression does this step automatically for you!</p>
 <p>So now, your model can be rewritten in one line and used in a regression as</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1103,7 +1103,7 @@ Name: lprice, dtype: float64
 <li><p>A 1% increase in size is associate with a 1.71% higher price <strong>for ideal diamonds</strong></p></li>
 </ul>
 </li>
-<li><p>Relationship of cut on price: <span class="math notranslate nohighlight">\(0.33 + 0.18*log(carat)\)</span>. The average</p>
+<li><p>Relationship of cut on price: <span class="math notranslate nohighlight">\(0.33 + 0.18*log(carat)\)</span>.</p>
 <ul>
 <li><p>For 1 carat diamonds (<span class="math notranslate nohighlight">\(log(1)=0\)</span>), ideal diamonds are 33% more expensive than non-ideal diamonds</p></li>
 <li><p>For 2 carat diamonds (<span class="math notranslate nohighlight">\(log(2)=0.693\)</span>), ideal diamonds are 45% more expensive than non-ideal diamonds</p></li>
@@ -1123,7 +1123,7 @@ Name: lprice, dtype: float64
 <ul class="simple">
 <li><p>Mathematically: 1 carat diamonds that are ideal are 33% more expensive than non-ideal diamonds, but 2 carat ideal diamonds are 45% more expensive than non-deal diamonds</p></li>
 <li><p>Graphically, the difference in the slope of those cut quality-price relationships for small/large diamonds is <span class="math notranslate nohighlight">\(\beta_2\)</span></p></li>
-<li><p><em>Economically, you might say that the value of a better cut is even more valuable forlarger diamonds</em></p></li>
+<li><p><em>Economically, you might say that the value of a better cut is even more valuable for larger diamonds</em></p></li>
 </ul>
 </li>
 </ol>
@@ -1148,7 +1148,7 @@ y = a +\beta_0 X_0 + \beta_1 X_1+ ...+\beta_N X_N+ u
 \[
 y = a +\hat{0.5} W + \hat{-0.1} H
 \]</div>
-<p>How do you interpret <span class="math notranslate nohighlight">\(\hat{\beta_1} &lt; 0 \)</span> on H?</p>
+<p>How do you interpret <span class="math notranslate nohighlight">\(\hat{\beta} &lt; 0 \)</span> on H?</p>
 <p>This regression implies that, for a given weight (holding weight fixed), taller players average fewer tackles. In other words, skinny football players get fewer tackles.</p>
 <p><strong>Also remember that predictors often change together!</strong></p>
 <p>For example, taller players are likely to be heavier. So if a 1 inch increase typically comes with a weight gain, the <em>total impact</em> of height on tackles (i.e. <em>not</em> holding all other factors constant) will include the estimated impact of weight.</p>
@@ -1167,7 +1167,7 @@ y = a +\hat{0.5} W + \hat{-0.1} H
 </div></blockquote>
 <p>This should go a decent way to  solving  your worry above.</p>
 <hr class="docutils" />
-<p>Similarly, you might be worried that some years are at high points in the business cycle, and these years have concurrently high investment and profits simly because of the business cycle. This would cause <span class="math notranslate nohighlight">\(b\)</span> to be positive <em>even if investment does not lead to profits.</em></p>
+<p>Similarly, you might be worried that some years are at high points in the business cycle, and these years have concurrently high investment and profits simply because of the business cycle. This would cause <span class="math notranslate nohighlight">\(b\)</span> to be positive <em>even if investment does not lead to profits.</em></p>
 <p>So you might estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+d*C(year)+u\)</span>. This is often referred to as “year fixed effects”, and it means that your estimate of <span class="math notranslate nohighlight">\(b\)</span> removes the impact of years, and presumably, the business cycle.</p>
 <blockquote class="epigraph">
 <div><p>Intuitively, you can think of <span class="math notranslate nohighlight">\(b\)</span> in this model as “comparing firms in the same year” or “controlling for time trends in profits”.</p>
@@ -1234,13 +1234,13 @@ Notes:
 <li><p><strong><span class="math notranslate nohighlight">\(\rightarrow\)</span> the meaning of the coefficient’s magnitude <em>depends on the corresponding variable’s variation!</em></strong></p></li>
 <li><p><span class="math notranslate nohighlight">\(\rightarrow\)</span> so change variables so that a “1 unit increase” implies the same amount of movement</p></li>
 </ul>
-<div class="admonition-a-great-trick-for-comparing-cofficient-size admonition">
-<p class="admonition-title">A great trick for comparing cofficient size</p>
+<div class="admonition-a-great-trick-for-comparing-coefficient-size admonition">
+<p class="admonition-title">A great trick for comparing coefficient size</p>
 <p><strong>Scale continuous variables by their standard deviation!</strong></p>
 </div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><em>(Only continuous variables! Don’t do this for dummy variables or categorical variables)</em></p>
+<p><em>Only scale continuous variables! Don’t scale dummy variables or categorical variables!</em></p>
 </div>
 <p>Here is that solution in action:</p>
 <div class="cell docutils container">
@@ -1281,7 +1281,7 @@ dtype: float64
 </div>
 </div>
 </div>
-<p><strong>So a 1 standard deviation increase in <span class="math notranslate nohighlight">\(\log carat\)</span> is associated with a 0.98% increase in price. Compared to <span class="math notranslate nohighlight">\(ideal\)</span>, we can say that a reasonable variation in carat size is associated with a price increase about 10 times larger than the impact of cut, not 17 times larger.</strong></p>
+<p><strong>So a 1 standard deviation increase in <span class="math notranslate nohighlight">\(\log carat\)</span> is associated with a 98% increase in price. Compared to <span class="math notranslate nohighlight">\(ideal\)</span>, we can say that a reasonable variation in carat size is associated with a price increase about 10 times larger than the impact of cut, not 17 times larger.</strong></p>
 <p>Also, notice that the new coefficent (0.98) is about 58% of the original coefficient (1.69).</p>
 <details class="sphinx-bs dropdown card mb-3">
 <summary class="summary-title card-header">
