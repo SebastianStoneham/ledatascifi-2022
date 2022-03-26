@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>5.3.6. Doing ML Wrong is Easy &#8212; LeDataSciFi-2022</title>
+    <title>5.3.6. The Cardinal Sin of ML: Data Leakage &#8212; LeDataSciFi-2022</title>
     
   <link rel="stylesheet" href="../../_static/css/index.f658d18f9b420779cfdf24aa0a7e2d77.css">
 
@@ -608,7 +608,7 @@ const thebe_selector_output = ".output, .cell_output"
      </li>
      <li class="toctree-l3 current active">
       <a class="current reference internal" href="#">
-       5.3.6. Doing ML Wrong is Easy
+       5.3.6. The Cardinal Sin of ML: Data Leakage
       </a>
      </li>
     </ul>
@@ -799,8 +799,13 @@ const thebe_selector_output = ".output, .cell_output"
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#the-cardinal-sin-of-ml-data-leakage">
-   5.3.6.1. The Cardinal Sin of ML: Data Leakage
+  <a class="reference internal nav-link" href="#illustration">
+   5.3.6.1. Illustration
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definition">
+   5.3.6.2. Definition
   </a>
  </li>
 </ul>
@@ -814,14 +819,13 @@ const thebe_selector_output = ".output, .cell_output"
         
               <div>
                 
-  <div class="section" id="doing-ml-wrong-is-easy">
-<h1><span class="section-number">5.3.6. </span>Doing ML Wrong is Easy<a class="headerlink" href="#doing-ml-wrong-is-easy" title="Permalink to this headline">¶</a></h1>
-<p>The following catastrophe is brought to you by <span class="xref myst">Data Leakage</span> (TM), the #1 enemy of machine learners everywhere recommended by 0 out of 10 dentists, and our sponsor Daisy Cottage Cheese:</p>
+  <div class="section" id="the-cardinal-sin-of-ml-data-leakage">
+<h1><span class="section-number">5.3.6. </span>The Cardinal Sin of ML: Data Leakage<a class="headerlink" href="#the-cardinal-sin-of-ml-data-leakage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="illustration">
+<h2><span class="section-number">5.3.6.1. </span>Illustration<a class="headerlink" href="#illustration" title="Permalink to this headline">¶</a></h2>
+<p>The following catastrophe is brought to you by <span class="xref myst">Data Leakage</span> (TM), the #1 enemy of machine learners everywhere, recommended by 0 out of 10 dentists, and also, our sponsor Daisy Cottage Cheese:</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mjWKddZ5vko" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>I’m sorry for that jingle in your head, so so sorry.</p>
-</div>
+<p><em>(I’m sorry for putting that jingle in your head, so so sorry.)</em></p>
 <hr class="docutils" />
 <ul class="screenbox">
 <li class="sceneheader">INT. DUNGY BASEMENT COMPUTER LAB</li>
@@ -958,9 +962,10 @@ Good thing Grandma wont know about this...
 <li class="transition ">IMMIGRANT SONG BY LED ZEPPELIN PLAYS OVER CREDITS </li>
 </ul>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/y8OtzJtp-EM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 <hr class="docutils" />
-<div class="section" id="the-cardinal-sin-of-ml-data-leakage">
-<h2><span class="section-number">5.3.6.1. </span>The Cardinal Sin of ML: Data Leakage<a class="headerlink" href="#the-cardinal-sin-of-ml-data-leakage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="definition">
+<h2><span class="section-number">5.3.6.2. </span>Definition<a class="headerlink" href="#definition" title="Permalink to this headline">¶</a></h2>
 <p><a class="reference external" href="https://scikit-learn.org/stable/common_pitfalls.html#data-leakage">Data leakage</a></p>
 <blockquote>
 <div><p><strong>is when information that would not be available at prediction time is used when building the model.</strong> This results in overly optimistic performance estimates, for example from cross-validation, and thus poorer performance when the model is used on actually novel data, for example during production.</p>
@@ -971,15 +976,16 @@ Good thing Grandma wont know about this...
 <li><p>Never call fit on the test data</p></li>
 <li><p>Data cleaning and transformation steps applied to the training data should not be learned from the test data</p></li>
 </ol>
-<p>The example above falls prey to data leakage because the testing data is the training data, rather than following ]</p>
-<p><a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">The next section</span></a> will explain how exactly to avoid all of these problems <em>with code</em>, but for now, let’s just say that</p>
-<blockquote class="epigraph">
-<div><p>The absolute golden rule of modeling is…</p>
+<p>The example above falls prey to data leakage because the testing data is the training data, rather than following the lessons above.</p>
+<p><a class="reference internal" href="04a_SKLearn.html"><span class="doc std std-doc">The next section</span></a> of the book will explain how exactly to avoid all of these problems <em>with code</em>, but for now, let’s just state the following warning:</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>The absolute golden rule of prediction modeling is…</p>
 <p><strong>YOUR MODEL CAN’T HAVE ACCESS TO ANY DATA THAT IT WOULDN’T HAVE IN PRACTICE WHEN IT MAKES THE PREDICTION.</strong></p>
-</div></blockquote>
+</div>
 <p>I know I already said that, and repetition is usually bad writing, but it must be said again. And again.</p>
 <p>That said, knowing that data leakage is bad doesn’t mean it’s easy to avoid.</p>
-<p>Data leakage can sneak into your analysis in tricky ways. Here are some examples:</p>
+<p>Data leakage can sneak into your analysis in tricky ways:</p>
 <ul class="simple">
 <li><p>The outcome variable is a predictor (implicitly or explicitly)</p></li>
 <li><p>Predictor variables that are in response to the result (after the fact) or the possibility (anticipatory)</p></li>
