@@ -845,10 +845,7 @@ const thebe_selector_output = ".output, .cell_output"
 \log(\text{price})= 8.2+ 1.53 *\log(\text{carat}) + 0.33* \text{Ideal} + 0.18* \log(\text{carat})\cdot \text{Ideal}
 \]</div>
 <p>Those coefficients are <em>estimates</em>, not gospel. There is some uncertainty about what the “true” value should be.</p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<img src=https://media.giphy.com/media/TIjVQiwWQFDMzjk4gU/giphy.gif width="150">
-</div>
+<img src=https://media.giphy.com/media/TIjVQiwWQFDMzjk4gU/giphy.gif width="300">
 <div class="cell tag_hide-input tag_hide-output docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># load some data to practice regressions</span>
@@ -870,42 +867,15 @@ const thebe_selector_output = ".output, .cell_output"
             <span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">const</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>                           
             <span class="p">)</span>  
 
-<span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<span class="p">(</span>
+<span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal + lcarat*ideal&#39;</span><span class="p">,</span> 
+       <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;cut in [&quot;Fair&quot;,&quot;Ideal&quot;]&#39;</span><span class="p">))</span>
+<span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span><span class="o">.</span><span class="n">tables</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># the summary is multipe tables stitched together. let&#39;s only print the params</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_html"><table class="simpletable">
-<caption>OLS Regression Results</caption>
-<tr>
-  <th>Dep. Variable:</th>         <td>lprice</td>      <th>  R-squared:         </th> <td>   0.930</td> 
-</tr>
-<tr>
-  <th>Model:</th>                   <td>OLS</td>       <th>  Adj. R-squared:    </th> <td>   0.930</td> 
-</tr>
-<tr>
-  <th>Method:</th>             <td>Least Squares</td>  <th>  F-statistic:       </th> <td>1.022e+05</td>
-</tr>
-<tr>
-  <th>Date:</th>             <td>Thu, 25 Mar 2021</td> <th>  Prob (F-statistic):</th>  <td>  0.00</td>  
-</tr>
-<tr>
-  <th>Time:</th>                 <td>14:42:05</td>     <th>  Log-Likelihood:    </th> <td> -1650.8</td> 
-</tr>
-<tr>
-  <th>No. Observations:</th>      <td> 23106</td>      <th>  AIC:               </th> <td>   3310.</td> 
-</tr>
-<tr>
-  <th>Df Residuals:</th>          <td> 23102</td>      <th>  BIC:               </th> <td>   3342.</td> 
-</tr>
-<tr>
-  <th>Df Model:</th>              <td>     3</td>      <th>                     </th>     <td> </td>    
-</tr>
-<tr>
-  <th>Covariance Type:</th>      <td>nonrobust</td>    <th>                     </th>     <td> </td>    
-</tr>
-</table>
-<table class="simpletable">
 <tr>
             <td></td>              <th>coef</th>     <th>std err</th>      <th>t</th>      <th>P>|t|</th>  <th>[0.025</th>    <th>0.975]</th>  
 </tr>
@@ -921,21 +891,7 @@ const thebe_selector_output = ".output, .cell_output"
 <tr>
   <th>lcarat:ideal[T.True]</th> <td>    0.1822</td> <td>    0.015</td> <td>   12.101</td> <td> 0.000</td> <td>    0.153</td> <td>    0.212</td>
 </tr>
-</table>
-<table class="simpletable">
-<tr>
-  <th>Omnibus:</th>       <td>117.253</td> <th>  Durbin-Watson:     </th> <td>   1.231</td>
-</tr>
-<tr>
-  <th>Prob(Omnibus):</th> <td> 0.000</td>  <th>  Jarque-Bera (JB):  </th> <td> 145.473</td>
-</tr>
-<tr>
-  <th>Skew:</th>          <td> 0.097</td>  <th>  Prob(JB):          </th> <td>2.58e-32</td>
-</tr>
-<tr>
-  <th>Kurtosis:</th>      <td> 3.337</td>  <th>  Cond. No.          </th> <td>    19.6</td>
-</tr>
-</table><br/><br/>Notes:<br/>[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.</div></div>
+</table></div></div>
 </div>
 <p>Thus, the table that regression produces (which you can see above by clicking the plus button) also displays information next to each coefficient about the level of precision associated with the estimated coefficients.</p>
 <table class="colwidths-auto table">

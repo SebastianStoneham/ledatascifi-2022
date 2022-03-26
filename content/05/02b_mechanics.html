@@ -1152,7 +1152,7 @@ COEFS: [0.         1.68193567]
 <p class="admonition-title">Tip</p>
 <p><strong>Here is how you run this test: You just add the dummy variable as a new variable in the formula!</strong></p>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ideal is a dummy variable = 1 if ideal and 0 if not ideal</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + ideal&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
@@ -1221,7 +1221,7 @@ Notes:
 <p>And if you look at the results of the next regression, the “ideal” cut level doesn’t have a coefficient. <strong>Statsmodels</strong> automatically drops one of the categories when you use the formula approach. Nice!!!</p>
 <p>But if you manually set up the regression in statsmodels or sklearn, you have to drop one level yourself!!!</p>
 </div>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">sm_ols</span><span class="p">(</span><span class="s1">&#39;lprice ~ lcarat + C(cut)&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">diamonds2</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
 </pre></div>

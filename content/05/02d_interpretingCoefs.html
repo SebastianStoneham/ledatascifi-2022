@@ -1143,23 +1143,24 @@ Name: lprice, dtype: float64
 y = a +\beta_0 X_0 + \beta_1 X_1+ ...+\beta_N X_N+ u
 \]</div>
 <p><span class="math notranslate nohighlight">\(\beta_1\)</span> estimates the expected change in Y for a 1 unit increase in <span class="math notranslate nohighlight">\(X_1\)</span> (as we covered above), <strong>holding all other controls constant!</strong></p>
-<p>As an illustration, if Y = number of tackles by a football player in a year, <span class="math notranslate nohighlight">\(W\)</span> is weight, and <span class="math notranslate nohighlight">\(H\)</span> is height, suppose we estimate that</p>
+<p>As a hypothetical illustration, if Y = number of tackles by a football player in a year, <span class="math notranslate nohighlight">\(W\)</span> is weight, and <span class="math notranslate nohighlight">\(H\)</span> is height, suppose we estimate that</p>
 <div class="math notranslate nohighlight">
 \[
 y = a +\hat{0.5} W + \hat{-0.1} H
 \]</div>
-<p>How do you interpret <span class="math notranslate nohighlight">\(\hat{\beta} &lt; 0 \)</span> on H?</p>
-<p>This regression implies that, for a given weight (holding weight fixed), taller players average fewer tackles. In other words, skinny football players get fewer tackles.</p>
-<p><strong>Also remember that predictors often change together!</strong></p>
-<p>For example, taller players are likely to be heavier. So if a 1 inch increase typically comes with a weight gain, the <em>total impact</em> of height on tackles (i.e. <em>not</em> holding all other factors constant) will include the estimated impact of weight.</p>
+<p>How do you interpret <span class="math notranslate nohighlight">\(\hat{\beta_2} &lt; 0 \)</span> on H?</p>
+<ul class="simple">
+<li><p>This regression implies that, <strong>for a given weight (holding weight fixed),</strong> taller players average fewer tackles. In other words, skinny football players get fewer tackles.</p></li>
+<li><p>This regression does NOT imply that taller players average fewer tackles. In the real world, what we call “independent variables” in the regression  often change together. Taller players are likely to be heavier. So if a 1 inch increase typically comes with a weight gain, the <em>total impact</em> of height on tackles (i.e. <em>not</em> holding all other factors constant) will include the estimated impact of weight, which <span class="math notranslate nohighlight">\(\hat{\beta_2} &lt; 0 \)</span></p></li>
+</ul>
 </div>
 <div class="section" id="if-other-categorical-controls-are-included">
 <h2><span class="section-number">5.2.4.6. </span>If other categorical controls are included<a class="headerlink" href="#if-other-categorical-controls-are-included" title="Permalink to this headline">¶</a></h2>
 <p>Suppose you estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+u\)</span>, and you want to focus on <span class="math notranslate nohighlight">\(b\)</span> to capture how investments translate to profits. You’ve added some control variables X, but you’re still worried that this regression will get the relationship wrong, because different industries have different profit margins for reasons that have nothing to do with investment levels.</p>
 <p>In other words, you want to “control for industry”. So you estimate <span class="math notranslate nohighlight">\(profits=a+b*investment+c*X+d*C(gsector)+u\)</span>, by including the firm’s industry as a categorical control.</p>
-<div class="margin sidebar">
-<p class="sidebar-title"></p>
-<p>This is often called including “industry <strong>fixed effects</strong> “.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>When you add industry to a regression as a categorical variable, it is called including “industry <strong>fixed effects</strong>”.</p>
 </div>
 <p>What does <span class="math notranslate nohighlight">\(b\)</span> mean now? Well, the lessons above apply: It is the relationship between investment and profits, but now we capture the average profit level (across all firms in an industry over all years of our sample). So we are holding the industry profit level (again, over the whole time period of analysis) fixed.</p>
 <blockquote class="epigraph">
